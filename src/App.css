@@ -231,8 +231,15 @@
 }
 
 .react-flow__edge.selected .react-flow__edge-path {
-  stroke: #3b82f6;
-  stroke-width: 2.5;
+  stroke: #e11d48;
+  stroke-width: 3;
+  stroke-dasharray: 6 3;
+}
+
+.react-flow__edge.selected .react-flow__edge-interaction {
+  stroke: #e11d48;
+  stroke-opacity: 0.15;
+  stroke-width: 14;
 }
 
 /* ===== PFD Nodes ===== */
