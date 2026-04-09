@@ -15,6 +15,7 @@ import {
   useReactFlow,
   BackgroundVariant,
   type IsValidConnection,
+  reconnectEdge,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { toPng } from 'html-to-image';
@@ -93,6 +94,13 @@ function FlowApp() {
       setNodes((nds) => [...nds, newNode]);
     },
     [screenToFlowPosition, setNodes]
+  );
+
+  const onReconnect = useCallback(
+    (oldEdge: Edge, newConnection: Connection) => {
+      setEdges((eds) => reconnectEdge(oldEdge, newConnection, eds));
+    },
+    [setEdges]
   );
 
   const handleSave = useCallback(() => {
@@ -198,6 +206,7 @@ function FlowApp() {
           nodeTypes={nodeTypes}
           defaultEdgeOptions={defaultEdgeOptions}
           isValidConnection={isValidConnection}
+          onReconnect={onReconnect}
           fitView
           deleteKeyCode={['Backspace', 'Delete']}
           snapToGrid
